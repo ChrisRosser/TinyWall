@@ -106,6 +106,15 @@ namespace pylorak.TinyWall
                         }
                         return ExitCode.Success;
                     }
+                case StartupCommand.RelocationTest:
+                    {
+                        var cmdArgs = cliArgs.RelocationTest;
+                        // Exit code doubles as the result so the dry-run is scriptable:
+                        // Success when a replacement was found, GenericError when not.
+                        return DevelToolCli.TestRelocation(cmdArgs.ExecutablePath.Value!, cmdArgs.OutputFile.Value)
+                            ? ExitCode.Success
+                            : ExitCode.GenericError;
+                    }
                 default:
                     throw new InvalidOperationException();
             }
