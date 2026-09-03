@@ -246,6 +246,7 @@ namespace pylorak.TinyWall
                 case StartupCommand.UpdateCreator:
                 case StartupCommand.ResXOptimizer:
                 case StartupCommand.BatchSigner:
+                case StartupCommand.RelocationTest:
                     AppDomain.CurrentDomain.UnhandledException += UnhandledException_Cli;
                     break;
                 default:
